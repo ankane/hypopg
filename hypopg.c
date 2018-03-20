@@ -1304,6 +1304,10 @@ hypo_get_relation_info_hook(PlannerInfo *root,
 											inhparent, rel, relation, entry);
 				}
 			}
+
+			/* Trust cached stats */
+			rel->pages = relation->rd_rel->relpages;
+			rel->tuples = relation->rd_rel->reltuples;
 		}
 
 		/* Close the relation release the lock now */
